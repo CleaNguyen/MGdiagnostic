@@ -1,0 +1,83 @@
+
+      body {
+        position: relative;
+        background-color: #E0E0E0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      .navbar {
+        letter-spacing: 3px;
+      }
+
+      .jumbotron {
+        background-image: url(water.jpeg);
+        background-size: cover;
+        text-align: center;
+        color: whitesmoke;
+        padding-top: 110px;
+        padding-bottom: 110px;
+        margin-bottom: 0px;
+      }
+
+      #mainTitle {
+        padding-top: 50px;
+      }
+
+      #aboutUs {
+        padding: 60px;
+        background-color: whitesmoke;
+        margin-top: 0px;
+      }
+    
+      .bg-grey {
+      background-color: #f6f6f6;
+      }
+
+      .listTitle {
+        list-style: none;
+      }
+
+      #contactUs {
+        margin-top: 50px;
+        padding: 20px;
+      }
+
+      #nosServices {
+        margin-top: 30px;
+        margin-bottom: 50px;
+      }
+
+      #contactTitle {
+        padding: 15px;
+        margin-bottom: 20px;
+      }
+    
+      .map-responsive{
+      overflow:hidden;
+      padding-bottom:56.25%;
+      position:relative;
+      height:0;
+      }
+
+      .map-responsive iframe{
+      left:0;
+      top:0;
+      height:100%;
+      width:100%;
+      position:absolute;
+      }
+
+      #openingHours {
+        padding: 10px;
+      }
+
+      footer {
+        padding: 40px;
+      }
+
+      #contactForm {
+          padding-top: 10px;
+      }

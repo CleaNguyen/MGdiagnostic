@@ -1,0 +1,269 @@
+<?php 
+
+    $error = ""; $successMessage = "";
+    
+    if ($_POST) {
+
+        if (!$_POST["email"]) {
+
+            $error .= "Une adresse e-mail valide est requise.<br>";
+        }
+
+        if (!$_POST["content"]) {
+
+            $error .= "Merci d'indiquer votre demande.<br>";
+        }
+
+        if (!$_POST["telephone"]) {
+
+            $error .= "Un numéro de téléphone valide est requis.<br>";
+        }
+
+        if ($_POST['email'] && filter_var($_POST["email"], FILTER_VALIDATE_EMAIL) === false) {
+
+            $error .= "Votre adresse e-mail est invalide.<br>";
+        }
+
+        if ($error != "") {
+            $error = '<div class="alert alert-danger" role="alert"><p>
+                Votre demande n\a pas pu être envoyée en raison des erreurs suivantes:</p>' . $error . '</div>';
+
+        } else {
+            
+          
+
+            $emailTo = "clea-nguyen@hotmail.fr";
+
+            $subject = "Nouveau message depuis votre site internet";
+
+            $content = $_POST['content'];
+            
+            $headers = "From: ".$_POST['email'];
+
+            if (mail($emailTo, $subject, $content, $headers)) {
+
+                $successMessage = '<div class="alert alert-success" role="alert"> Votre message a bien été envoyé, nous reviendrons vers vous dans les plus brefs délais.</div>';
+            } else {
+
+                $error = '<div class="alert alert-danger" role="alert" <p>Votre message n\'a pas pu être envoyé, merci d\'essayer ultérieurement.</p></div>';
+
+            }
+        }
+
+    }
+
+?>
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+    <script src="https://kit.fontawesome.com/1e882b039a.js" crossorigin="anonymous"></script>
+
+    <title>M.G. Diagnostic</title>
+
+    <link rel="stylesheet" href="stylesheet.css">
+
+  </head>
+
+  <body data-spy="scroll" data-target="#navbar" data-offset="70">
+
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark" id="navbar">
+      <a class="navbar-brand" href="#">M.G. Diagnostic</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#jumbO">ACCUEIL <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#aboutUs">NOTRE COMPAGNIE</a>
+          <li class="nav-item">
+            <a class="nav-link" href="#nosServices">NOS SERVICES</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contactUs">CONTACT</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+
+
+
+
+    <div id="jumbO" class="jumbotron">
+      <h1 id="mainTitle" class="display-4">M.G. Diagnostic</h1>
+      <h2 class="lead">Votre partenaire en plomberie</h2>
+      <hr class="my-4">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      <br>
+      <a class="btn btn-primary btn-outline-light btn-dark" href="#contactUs" role="button">Contactez-nous</a>
+    </div>
+
+
+    <div id="aboutUs" class="container-fluid text-center rounded">
+    <h2>Notre compagnie</h2>
+    <h4 class="text-muted lead">Qui sommes-nous ?</h4>
+    <br>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <hr>
+  </div>
+  
+  <div class="container-fluid text-center" id="nosServices">
+    <div>
+      <h2>Nos services</h2>
+      <p class="lead">Liste des dépannages et travaux que nous réalisons </p>
+    </div>
+</div>
+
+<div class="container">
+  <div class="card-deck">
+    <div class="card">
+      <img src="tools2.jpeg" class="card-img-top" alt="decorative image">
+      <div class="card-body">
+        <h5 class="card-title text-center"> <i class="icon fas fa-wrench"></i>  Fuites d'eau extérieures</h5>
+
+        <ul class="card-text">
+          <li class="text-muted lead listTitle">Recherche </li>
+          <li>Différentes méthodes de détection de fuites: inspection vidéo, gaz traceur, électro acoustique, mise en pression… </li>
+          <li>Traçage de canalisations: drains, conduits…</li>
+        </ul>
+        <ul>
+           <li class="text-muted lead listTitle">Réparation </li>
+          <li>Terrassement manuel ou mécanique.</li>
+         <li>Fuites sans ou avec tous types de revêtement.</li>
+          <li>Réseaux eaux Usées (EU), Adduction d'Eau Potable (AEP), Robinet d'Incendie Armé (RIA).</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card">
+      <img src="splashing.jpeg" class="card-img-top" alt="decorative image">
+      <div class="card-body">
+        <h5 class="card-title text-center"> <i class="icons fas fa-toolbox"></i> Plomberie</h5>
+
+            
+        <ul class="card-text">
+          <li class="text-muted lead listTitle">Débouchage canalisations</li>
+          <li> Pompe manuelle</li>
+          <li> Furet manuel et mécanique</li>
+          <li>Déboucheur haute pression</li>
+        </ul>
+
+        <ul>
+          <li class="text-muted lead listTitle">Fuites intérieures</li>
+            <li>Canalisation</li>
+            <li>Robinetterie</li>
+            <li>Sanitaires</li>
+        </ul>
+
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="tools.jpeg" class="card-img-top" alt="decorative image">
+      <div class="card-body">
+        <h5 class="card-title text-center"><i class="icon fas fa-hammer"></i> Assainissement non-collectif</h5>
+       
+        <ul>
+          <li class="text-muted lead style listTitle">Entretien</li>
+          <li>Hydro curage de canalisations réseau tout à l'égout </li>
+          <li> Révision de poste de relevage pour Eaux Pluviales (EP) et Eaux Usées (EU). Travaux</li>
+          <li> Création et Rénovation de réseau privé d'eaux usées: fosses septiques, micro-stations, bacs à graisses, poste de relevage</li>
+          <li> Reprise et mise en conformité des anciennes installations</li>
+          <li> Poses et réglages des branchements tout à l'égout </li>
+        </ul>
+
+        <ul>
+          <li class="text-muted listTitle lead">Travaux de maçonnerie</li>
+          <li>Reprise de regards</li>
+          <li>Réfection en béton, enrobé </li>
+        </ul>
+
+          </div>
+    </div>
+  </div>
+</div>
+
+             
+
+<div id="contactUs" class="container bg-grey rounded">
+  <h2 id="contactTitle" class="text-center">Contact</h2>
+
+  <div id="error"> <? echo $error.$successMessage; ?> </div>
+
+  <p id="openingHours" class="lead text-center">Nous sommes ouverts du lundi au vendredi de 9h00 à 18h00 et nous intervenons dans le Gard et départements limitrophes.</p>
+
+
+  <div class="row">
+    <div class="col-sm-5 text-center">
+
+      <p> <i class="fas fa-mobile-alt"></i>  06 67 87 65 94</p>
+      <p><i class="fas fa-envelope"></i>  mgdiagnostic@hotmail.fr</p>
+      <p> <i class="fas fa-map-marker-alt"></i>  69 Impasse du jardin, 30129 Manduel</p>
+ 
+    
+      <div class="map-responsive">
+
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d743.9974738575181!2d4.479129924808204!3d43.82391369659191!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12b5d229bffed749%3A0xbd24a1111122c8d2!2s69%20Impasse%20du%20Jardin%2C%2030129%20Manduel%2C%20France!5e1!3m2!1sen!2sno!4v1616410169264!5m2!1sen!2sno" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </div>
+
+
+    <div id="contactForm" class="col-sm-7">
+      <form method="post">
+
+      <div class="row">
+        <div class="col-sm-6 form-group">
+          <input class="form-control" id="name" name="name" placeholder="Nom et prénom" type="text">
+          </div>
+          <div class="col-sm-6 form-group">
+          <input class="form-control" id="telephone" name="telephone" placeholder="Téléphone">
+          </div>
+          <div class="col-sm-12 form-group">
+          <input class="form-control" id="email" name="email" placeholder="Email" type="email">
+        </div>
+      </div>
+      <div class="form-group">
+      <textarea class="form-control" id="content" name="content" placeholder="Votre demande" rows="8"></textarea><br>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 form-group text-center">
+          <button class="btn btn-dark btn-outline-light" type="submit">Envoyer</button>
+        </div>
+      </div>
+    </form>
+
+    </div>
+  </div>
+</div>
+
+
+
+  <footer class="container">
+    <p class="float-right"><a href="#jumbO">Retour à l'accueil</a></p>
+    <p>&copy; 2021 M.G. Diagnostic</p>
+  </footer>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/javascript.util/0.12.12/javascript.util.min.js"></script>
+
+
+
+
+
+
+
+  </body>
+</html>
