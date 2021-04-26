@@ -10,5 +10,8 @@ Project is created with
 * HTML5
 * PHP 7
 
+## Additional notes
+PHP content separated from main page since not supported on GitHub.
+
 ## Other resources
 * Photos source: unsplash.com
